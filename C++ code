@@ -1,0 +1,110 @@
+//....Homwork 07.......
+
+//..............Trip Distance Calcultor
+
+#include<iostream>
+using namespace std;
+
+void swap(int &dest, int &finaldest);
+
+//Driver proggrm.
+int main(){
+	int currloc;
+	int dest;
+	int finaldest;
+	char desire;
+	int totdistance;
+	int distance1;
+	int distance2=0;
+	int count=0;
+	
+	//Define a 2D array to include the distances.
+	int arr[4][4]={{0,10,20,30},{10,0,40,50},{20,40,0,60},{30,50,60,0}};
+
+	
+	do{
+				//Location codes.
+	cout<<"***************"<<endl<<"welcome to THIZU trip advicer"<<endl<<endl;
+	cout<<"Enter 1 : Galle "<<endl;
+	cout<<"Enter 2 : Beruwala "<<endl;
+	cout<<"Enter 3 : Colombo "<<endl;
+	cout<<"Enter 4 : Panadura "<<endl<<endl;
+	
+	//Enter current location.
+	cout<<"Please enter your current location :";
+	cin>>currloc;
+	cout<<endl;
+	
+	//If user inout wrong input then ask to try again.
+	while(currloc!=1 && currloc!=2 && currloc!=3 && currloc!=4){
+		cout<<"..............Please enter a valid input.............."<<endl;
+		cout<<"Please enter your current location :";
+		cin>>currloc;
+		cout<<endl;
+		}
+		
+	//Enter destintion.
+		cout<<"Please enter your destination :";
+		cin>>dest;
+		cout<<endl;
+		while(dest!=1 && dest!=2 && dest!=3 && dest!=4){
+			cout<<"Please enter a valid input"<<endl;
+			cout<<"Please enter your destination :";
+			cin>>dest;
+			cout<<endl;
+			}
+			
+			//Ask out the willigness to change the final destintion.
+			cout<<"do you wish to travel futher ?(if yes-'y', no-'n') : ";
+			cin>>desire;
+			while(desire!='y' && desire!='n'){
+				cout<<"Please enter a valid input"<<endl;
+				cout<<"do you wish to travel futher ?(if yes-'y', no-'n')";
+				cin>>desire;
+			}
+		
+		distance1=arr[currloc-1][dest-1];
+		
+//If user change his final destination then add the next distance he will travell, to total.
+	
+		while(desire=='y'){
+		cout<<"Please enter your final destination :";
+		cin>>finaldest;
+		cout<<endl;
+		//If wrong input ask to try again.
+		while(finaldest!=1 && finaldest!=2 && finaldest!=3 && finaldest!=4){
+			cout<<"Please enter a valid input"<<endl;
+			cout<<"Please enter your Final destination :";
+			cin>>finaldest;
+			cout<<endl;
+			}
+			swap(dest,finaldest);
+			distance2+=arr[dest-1][finaldest-1];
+			cout<<"do you wish to travel futher ?(if yes-'y', no-'n') : ";
+			cin>>desire;
+			while(desire!='y' && desire!='n'){
+				cout<<"Please enter a valid input"<<endl;
+				cout<<"do you wish to travel futher ?(if yes-'y', no-'n')";
+				cin>>desire;
+			}
+		}
+		count++;
+		//count total distance
+		totdistance=distance1+distance2;
+		cout<<"Total distance to be ravel :"<<totdistance<<"km "<<endl<<endl;
+		count++;
+			
+	}
+		while(count>0);
+	
+}	
+//swap the 1st destintion and current location to calculate the distnce2.
+void swap(int &dest, int &finaldest){
+	int temp;
+	temp=dest;
+	dest=finaldest;
+	finaldest=temp;
+	
+}	
+	
+	
